@@ -8,7 +8,7 @@ import altair as alt
 def main():
     st.title('House pricing')
     df_house_pricing = pd.read_csv("house_pricing.csv")
-    page = st.sidebar.selectbox('Choisir', ['Accueil', 'Shape', 'Statistiques descriptives', 'Heatmap'])
+    page = st.sidebar.selectbox('Choisir', ['Accueil', 'Shape', 'Statistiques descriptives', 'Data visualisation'])
 
     if page == 'Accueil':
         st.subheader('Raw data')
@@ -33,6 +33,9 @@ def main():
         fig, ax = plt.subplots(figsize=(90,90))
         sns.heatmap(df_house_pricing.corr(), annot=True, ax=ax)
         st.pyplot(fig)
+        st.subheader('Bar chart')
+        st.bar_chart(df_house_pricing)
+
 
 if __name__ == '__main__':
     main()
