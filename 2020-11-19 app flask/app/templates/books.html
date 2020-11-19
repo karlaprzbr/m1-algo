@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Hello{% endblock %}
+{% block content %}
+    {% for item in books %}
+        {{ item.title }}
+    {% endfor %}
+
+    
+{% endblock %}
