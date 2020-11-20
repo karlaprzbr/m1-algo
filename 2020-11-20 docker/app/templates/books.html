@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Hello{% endblock %}
+{% block content %}
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ISBN</th>
+          <th scope="col">Title</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Categories</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if isbn %}
+            {% for book in books %}
+                {% if book['isbn'] == isbn %}
+                    <tr>
+                        <td>{{ book['isbn'] }}</td>
+                        <td>{{ book['title'] }}</td>
+                        <td>
+                            {% for author in book['authors'] %}
+                                {{ author }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for category in book['categories'] %}
+                                {{ category }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+          {% endfor %}
+        {% elif title %}
+            {% for book in books %}
+                {% if book['title'] == title %}
+                    <tr>
+                        <td>{{ book['isbn'] }}</td>
+                        <td>{{ book['title'] }}</td>
+                        <td>
+                            {% for author in book['authors'] %}
+                                {{ author }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for category in book['categories'] %}
+                                {{ category }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+          {% endfor %}
+        {% else %}
+          {% for book in books %}
+            <tr>
+                <td>{{ book['isbn'] }}</td>
+                <td>{{ book['title'] }}</td>
+                <td>
+                    {% for author in book['authors'] %}
+                        {{ author }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for category in book['categories'] %}
+                        {{ category }}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}
