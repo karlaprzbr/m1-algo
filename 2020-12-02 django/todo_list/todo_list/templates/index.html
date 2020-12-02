@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+    <form method="post" action="#">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Ajouter une tâche">
+            <input type="submit" class="btn btn-primary" value="Ajouter">
+        </div>
+    </form>
+    {% for task in tasks %}
+        <ul>
+            <li>{{ task.content }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
